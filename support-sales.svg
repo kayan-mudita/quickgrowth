@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="260" viewBox="0 0 480 260" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f101f" />
+      <stop offset="100%" stop-color="#0b0c17" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <style>
+    .panel { fill: url(#bg); stroke: rgba(255, 255, 255, 0.08); }
+    .lane { fill: rgba(255, 255, 255, 0.02); stroke: rgba(255, 255, 255, 0.06); }
+    .label { fill: rgba(255, 255, 255, 0.75); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 12px; letter-spacing: 0.04em; }
+    .path { stroke: url(#accent); stroke-width: 3; fill: none; stroke-linecap: round; opacity: 0.85; }
+    .node { fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.2); }
+    .node text { fill: rgba(255, 255, 255, 0.9); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600; }
+    .funnel { fill: rgba(99, 102, 241, 0.18); stroke: rgba(99, 102, 241, 0.5); }
+    .dot { fill: url(#accent); opacity: 0.9; }
+  </style>
+
+  <rect x="10" y="10" width="460" height="240" rx="18" class="panel" />
+
+  <rect x="28" y="40" width="160" height="190" rx="14" class="lane" />
+  <text x="40" y="60" class="label">Funnel</text>
+
+  <rect x="210" y="40" width="110" height="190" rx="14" class="lane" />
+  <text x="222" y="60" class="label">Handoff</text>
+
+  <rect x="340" y="60" width="110" height="170" rx="14" class="lane" />
+  <text x="352" y="80" class="label">Calendar</text>
+
+  <polygon class="funnel" points="60,82 160,82 138,150 82,150" />
+  <polygon class="funnel" points="76,156 144,156 130,200 90,200" />
+
+  <g>
+    <rect class="node" x="60" y="90" width="100" height="26" rx="8" />
+    <text x="110" y="107" text-anchor="middle">Lead In</text>
+  </g>
+  <g>
+    <rect class="node" x="74" y="162" width="80" height="26" rx="8" />
+    <text x="114" y="179" text-anchor="middle">Best Fit</text>
+  </g>
+
+  <g>
+    <rect class="node" x="222" y="96" width="86" height="30" rx="9" />
+    <text x="265" y="116" text-anchor="middle">Route</text>
+  </g>
+  <g>
+    <rect class="node" x="222" y="146" width="86" height="30" rx="9" />
+    <text x="265" y="166" text-anchor="middle">Notify</text>
+  </g>
+
+  <g>
+    <rect class="node" x="360" y="96" width="74" height="30" rx="9" />
+    <text x="397" y="116" text-anchor="middle">Slot</text>
+  </g>
+  <g>
+    <rect class="node" x="360" y="146" width="74" height="30" rx="9" />
+    <text x="397" y="166" text-anchor="middle">Booked</text>
+  </g>
+
+  <path class="path" d="M160 110 C190 110 200 110 222 110" />
+  <path class="path" d="M160 175 C190 175 200 170 222 160" />
+  <path class="path" d="M308 110 C330 110 340 110 360 110" />
+  <path class="path" d="M308 160 C330 160 340 160 360 160" />
+
+  <circle class="dot" cx="206" cy="110" r="4" />
+  <circle class="dot" cx="206" cy="170" r="4" />
+  <circle class="dot" cx="336" cy="110" r="4" />
+  <circle class="dot" cx="336" cy="160" r="4" />
+</svg>

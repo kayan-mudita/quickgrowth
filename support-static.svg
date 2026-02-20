@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="260" viewBox="0 0 480 260" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f101f" />
+      <stop offset="100%" stop-color="#0b0c17" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <style>
+    .panel { fill: url(#bg); stroke: rgba(255, 255, 255, 0.08); }
+    .lane { fill: rgba(255, 255, 255, 0.02); stroke: rgba(255, 255, 255, 0.06); }
+    .label { fill: rgba(255, 255, 255, 0.75); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 12px; letter-spacing: 0.04em; }
+    .router { fill: rgba(99, 102, 241, 0.16); stroke: rgba(99, 102, 241, 0.45); }
+    .router text { fill: rgba(255, 255, 255, 0.9); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 11px; letter-spacing: 0.06em; }
+    .path { stroke: url(#accent); stroke-width: 3; fill: none; stroke-linecap: round; opacity: 0.8; }
+    .node rect { rx: 10; ry: 10; }
+    .card { rx: 8; ry: 8; fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.25); }
+    .card text { fill: white; font-size: 11px; font-family: "Inter", system-ui, -apple-system, sans-serif; font-weight: 600; }
+    .dot { fill: url(#accent); opacity: 0.8; }
+  </style>
+
+  <rect x="10" y="10" width="460" height="240" rx="18" class="panel" />
+
+  <rect x="30" y="70" width="110" height="140" rx="14" class="lane" />
+  <text x="40" y="90" class="label">Inbox</text>
+
+  <rect x="180" y="60" width="120" height="160" rx="14" class="lane" />
+  <text x="190" y="80" class="label">Auto Router</text>
+
+  <rect x="330" y="40" width="120" height="200" rx="14" class="lane" />
+  <text x="340" y="60" class="label">Destinations</text>
+
+  <rect x="205" y="120" width="70" height="70" rx="12" class="router" />
+  <text x="240" y="155" text-anchor="middle" class="router">AI</text>
+
+  <path class="path" d="M70 120 C140 120 160 120 205 120 C260 120 300 90 360 90" />
+  <path class="path" d="M70 150 C140 150 160 150 205 150 C260 150 300 140 360 130" />
+  <path class="path" d="M70 180 C140 180 160 180 205 180 C260 180 300 210 360 220" />
+
+  <g>
+    <rect class="card" x="50" y="112" width="90" height="32" />
+    <text x="60" y="132">VIP/Billing</text>
+  </g>
+  <g>
+    <rect class="card" x="50" y="144" width="90" height="32" />
+    <text x="60" y="164">Product Bug</text>
+  </g>
+  <g>
+    <rect class="card" x="50" y="176" width="90" height="32" />
+    <text x="60" y="196">FAQ/Macro</text>
+  </g>
+
+  <g class="node">
+    <rect x="360" y="80" width="78" height="32" fill="rgba(99, 102, 241, 0.16)" stroke="rgba(99, 102, 241, 0.5)" />
+    <text x="399" y="100" text-anchor="middle" class="label">VIP</text>
+    <rect x="360" y="128" width="78" height="32" fill="rgba(34, 211, 238, 0.16)" stroke="rgba(34, 211, 238, 0.45)" />
+    <text x="399" y="148" text-anchor="middle" class="label">L2</text>
+    <rect x="360" y="200" width="78" height="32" fill="rgba(16, 185, 129, 0.16)" stroke="rgba(16, 185, 129, 0.45)" />
+    <text x="399" y="220" text-anchor="middle" class="label">Self-serve</text>
+  </g>
+
+  <circle class="dot" cx="205" cy="120" r="4" />
+  <circle class="dot" cx="205" cy="150" r="4" />
+  <circle class="dot" cx="205" cy="180" r="4" />
+</svg>

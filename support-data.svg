@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="260" viewBox="0 0 480 260" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f101f" />
+      <stop offset="100%" stop-color="#0b0c17" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <style>
+    .panel { fill: url(#bg); stroke: rgba(255, 255, 255, 0.08); }
+    .lane { fill: rgba(255, 255, 255, 0.02); stroke: rgba(255, 255, 255, 0.06); }
+    .label { fill: rgba(255, 255, 255, 0.75); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 12px; letter-spacing: 0.04em; }
+    .path { stroke: url(#accent); stroke-width: 3; fill: none; stroke-linecap: round; opacity: 0.85; }
+    .node { fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.2); }
+    .node text { fill: rgba(255, 255, 255, 0.9); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600; }
+    .chip { fill: rgba(99, 102, 241, 0.16); stroke: rgba(99, 102, 241, 0.5); }
+    .chip text { fill: rgba(255, 255, 255, 0.9); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 11px; }
+    .dot { fill: url(#accent); opacity: 0.9; }
+  </style>
+
+  <rect x="10" y="10" width="460" height="240" rx="18" class="panel" />
+
+  <rect x="28" y="50" width="140" height="180" rx="14" class="lane" />
+  <text x="40" y="70" class="label">Sources</text>
+
+  <rect x="190" y="50" width="110" height="180" rx="14" class="lane" />
+  <text x="202" y="70" class="label">Filter</text>
+
+  <rect x="322" y="50" width="128" height="180" rx="14" class="lane" />
+  <text x="334" y="70" class="label">Unified</text>
+
+  <g>
+    <rect class="node" x="50" y="96" width="96" height="30" rx="8" />
+    <text x="98" y="115" text-anchor="middle">CSV</text>
+  </g>
+  <g>
+    <rect class="node" x="50" y="136" width="96" height="30" rx="8" />
+    <text x="98" y="155" text-anchor="middle">Forms</text>
+  </g>
+  <g>
+    <rect class="node" x="50" y="176" width="96" height="30" rx="8" />
+    <text x="98" y="195" text-anchor="middle">CRM</text>
+  </g>
+
+  <g>
+    <rect class="chip" x="205" y="110" width="80" height="36" rx="12" />
+    <text x="245" y="132" text-anchor="middle">Clean</text>
+  </g>
+  <g>
+    <rect class="chip" x="205" y="158" width="80" height="36" rx="12" />
+    <text x="245" y="180" text-anchor="middle">Match</text>
+  </g>
+
+  <g>
+    <rect class="node" x="338" y="96" width="96" height="30" rx="8" />
+    <text x="386" y="115" text-anchor="middle">CRM</text>
+  </g>
+  <g>
+    <rect class="node" x="338" y="136" width="96" height="30" rx="8" />
+    <text x="386" y="155" text-anchor="middle">Billing</text>
+  </g>
+  <g>
+    <rect class="node" x="338" y="176" width="96" height="30" rx="8" />
+    <text x="386" y="195" text-anchor="middle">Ops</text>
+  </g>
+
+  <path class="path" d="M146 110 C170 110 185 110 205 120" />
+  <path class="path" d="M146 150 C170 150 185 150 205 140" />
+  <path class="path" d="M146 190 C170 190 185 190 205 170" />
+
+  <path class="path" d="M285 128 C308 128 320 120 338 112" />
+  <path class="path" d="M285 176 C308 176 320 168 338 152" />
+
+  <circle class="dot" cx="200" cy="120" r="4" />
+  <circle class="dot" cx="200" cy="170" r="4" />
+  <circle class="dot" cx="320" cy="120" r="4" />
+  <circle class="dot" cx="320" cy="160" r="4" />
+</svg>
