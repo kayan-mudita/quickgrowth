@@ -173,7 +173,7 @@
       <div class="wl-modal-backdrop"></div>
       <div class="wl-modal-container">
         <button class="wl-modal-close" aria-label="Close">&times;</button>
-        <h2 class="wl-modal-title">Complete Your Signup</h2>
+        <h2 class="wl-modal-title">Request a Free Consult</h2>
         <p class="wl-modal-subtitle">One more step — tell us a bit about yourself.</p>
         <form id="waitlist-modal-form" autocomplete="on">
           <input type="hidden" name="form-name" value="waitlist" />
@@ -201,7 +201,7 @@
             <label for="wl-company">Company</label>
             <input id="wl-company" name="company" type="text" required placeholder="Acme Inc." autocomplete="organization" />
           </div>
-          <button type="submit" class="wl-modal-submit">Complete Signup</button>
+          <button type="submit" class="wl-modal-submit">Request a Free Consult</button>
         </form>
       </div>
     </div>
@@ -486,7 +486,7 @@
             closeModal();
             window.location.href = "/thank-you";
           } else {
-            submitBtn.textContent = "Complete Signup";
+            submitBtn.textContent = "Request a Free Consult";
             submitBtn.disabled = false;
             alert("Something went wrong. Please try again.");
           }
