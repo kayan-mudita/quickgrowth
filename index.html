@@ -155,8 +155,367 @@
     /></noscript>
     <!-- Hidden Netlify Form for detection -->
     <form name="waitlist" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="first-name" type="text" />
+      <input name="last-name" type="text" />
       <input name="email" type="email" />
+      <input name="company" type="text" />
+      <input name="utm_source" type="hidden" />
+      <input name="utm_medium" type="hidden" />
+      <input name="utm_campaign" type="hidden" />
+      <input name="utm_term" type="hidden" />
+      <input name="utm_content" type="hidden" />
     </form>
     <div id="root"></div>
+
+    <!-- Waitlist Modal Overlay -->
+    <div id="waitlist-modal" style="display:none">
+      <div class="wl-modal-backdrop"></div>
+      <div class="wl-modal-container">
+        <button class="wl-modal-close" aria-label="Close">&times;</button>
+        <h2 class="wl-modal-title">Complete Your Signup</h2>
+        <p class="wl-modal-subtitle">One more step — tell us a bit about yourself.</p>
+        <form id="waitlist-modal-form" autocomplete="on">
+          <input type="hidden" name="form-name" value="waitlist" />
+          <input type="hidden" name="bot-field" />
+          <input type="hidden" name="utm_source" />
+          <input type="hidden" name="utm_medium" />
+          <input type="hidden" name="utm_campaign" />
+          <input type="hidden" name="utm_term" />
+          <input type="hidden" name="utm_content" />
+          <div class="wl-field-row">
+            <div class="wl-field">
+              <label for="wl-first-name">First Name</label>
+              <input id="wl-first-name" name="first-name" type="text" required placeholder="Jane" autocomplete="given-name" />
+            </div>
+            <div class="wl-field">
+              <label for="wl-last-name">Last Name</label>
+              <input id="wl-last-name" name="last-name" type="text" required placeholder="Smith" autocomplete="family-name" />
+            </div>
+          </div>
+          <div class="wl-field">
+            <label for="wl-email">Email</label>
+            <input id="wl-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email" />
+          </div>
+          <div class="wl-field">
+            <label for="wl-company">Company</label>
+            <input id="wl-company" name="company" type="text" required placeholder="Acme Inc." autocomplete="organization" />
+          </div>
+          <button type="submit" class="wl-modal-submit">Complete Signup</button>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      /* ── Waitlist Modal ── */
+      #waitlist-modal {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .wl-modal-backdrop {
+        position: absolute; inset: 0;
+        background: rgba(0,0,0,.72);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+      .wl-modal-container {
+        position: relative;
+        width: 90%; max-width: 440px;
+        background: linear-gradient(145deg, #161622, #111118);
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 20px;
+        padding: 36px 32px 32px;
+        box-shadow: 0 24px 80px rgba(0,0,0,.6), 0 0 80px rgba(99,102,241,.15);
+        animation: wlSlideUp .3s ease;
+      }
+      @keyframes wlSlideUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .wl-modal-close {
+        position: absolute; top: 14px; right: 16px;
+        background: none; border: none; color: #fff8;
+        font-size: 28px; cursor: pointer; line-height: 1;
+        transition: color .2s;
+      }
+      .wl-modal-close:hover { color: #fff; }
+      .wl-modal-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 24px; font-weight: 700; margin: 0 0 6px;
+        background: linear-gradient(135deg, #fff 30%, #a5b4fc);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .wl-modal-subtitle {
+        font-family: 'Manrope', sans-serif;
+        font-size: 15px; color: #ffffffb3; margin: 0 0 24px;
+      }
+      .wl-field-row {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+      }
+      .wl-field { margin-bottom: 16px; }
+      .wl-field label {
+        display: block; font-size: 13px; font-weight: 600;
+        color: #ffffffb3; margin-bottom: 6px;
+        font-family: 'Manrope', sans-serif;
+      }
+      .wl-field input {
+        width: 100%; padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,.1);
+        background: rgba(255,255,255,.06);
+        color: #f8fafc; font-size: 15px;
+        font-family: 'Manrope', sans-serif;
+        outline: none;
+        transition: border-color .2s, box-shadow .2s, background .2s;
+      }
+      .wl-field input::placeholder { color: #ffffff66; }
+      .wl-field input:focus {
+        border-color: rgba(154,107,255,.8);
+        box-shadow: 0 0 0 3px rgba(154,107,255,.2);
+        background: rgba(255,255,255,.1);
+      }
+      .wl-modal-submit {
+        width: 100%; margin-top: 8px;
+        padding: 14px 24px; font-size: 16px; font-weight: 700;
+        font-family: 'Space Grotesk', sans-serif;
+        color: #fff; border: none; border-radius: 12px; cursor: pointer;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        box-shadow: 0 4px 15px rgba(99,102,241,.4);
+        transition: all .3s cubic-bezier(.4,0,.2,1);
+        position: relative; overflow: hidden;
+      }
+      .wl-modal-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(99,102,241,.6);
+      }
+      /* Inline success message */
+      .wl-inline-success {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 10px 20px; border-radius: 10px;
+        background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3);
+        color: #86efac; font-size: 15px; font-weight: 600;
+        font-family: 'Manrope', sans-serif;
+        animation: wlSlideUp .3s ease;
+      }
+      @media (max-width: 768px) {
+        .wl-modal-container { padding: 28px 20px 24px; }
+      }
+    </style>
+
+    <script>
+    (function () {
+      "use strict";
+
+      /* ── UTM helpers ── */
+      function getUtmParams() {
+        var params = new URLSearchParams(window.location.search);
+        var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+        var result = {};
+        keys.forEach(function (k) { result[k] = params.get(k) || ""; });
+        return result;
+      }
+
+      /* ── State ── */
+      var capturedEmail = "";
+      var activeCtaInline = null; // the .cta-inline wrapper that triggered the modal
+
+      /* ── DOM refs ── */
+      var modal = document.getElementById("waitlist-modal");
+      var modalForm = document.getElementById("waitlist-modal-form");
+      var emailInput = document.getElementById("wl-email");
+      var closeBtn = modal.querySelector(".wl-modal-close");
+      var backdrop = modal.querySelector(".wl-modal-backdrop");
+
+      /* ── Email validation ── */
+      function isValidEmail(v) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+      }
+
+      /* ── Open modal ── */
+      function openModal(email) {
+        capturedEmail = email.trim();
+        emailInput.value = capturedEmail;
+
+        // Fill UTM hidden fields
+        var utm = getUtmParams();
+        Object.keys(utm).forEach(function (k) {
+          var el = modalForm.querySelector('input[name="' + k + '"]');
+          if (el) el.value = utm[k];
+        });
+
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+        modal.querySelector("#wl-first-name").focus();
+      }
+
+      /* ── Close modal ── */
+      function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+      }
+
+      /* ── Submit email-only (partial) to Netlify ── */
+      function submitEmailOnly(email, callback) {
+        var utm = getUtmParams();
+        var body = new URLSearchParams();
+        body.append("form-name", "waitlist");
+        body.append("email", email);
+        Object.keys(utm).forEach(function (k) { body.append(k, utm[k]); });
+
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: body.toString()
+        }).then(function () {
+          if (callback) callback(true);
+        }).catch(function () {
+          if (callback) callback(false);
+        });
+      }
+
+      /* ── Submit full form to Netlify ── */
+      function submitFullForm(formData, callback) {
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString()
+        }).then(function () {
+          if (callback) callback(true);
+        }).catch(function () {
+          if (callback) callback(false);
+        });
+      }
+
+      /* ── Show inline success message ── */
+      function showInlineSuccess(ctaInline) {
+        if (!ctaInline) return;
+        var msg = document.createElement("div");
+        msg.className = "wl-inline-success";
+        msg.textContent = "\u2713 You\u2019re on the list!";
+        ctaInline.replaceWith(msg);
+      }
+
+      /* ── Intercept all 5 CTA buttons ── */
+      function attachFormListeners() {
+        // All CTA buttons on the page
+        var buttons = document.querySelectorAll(".cta-button");
+        buttons.forEach(function (btn) {
+          // Skip if it's inside the modal
+          if (btn.closest("#waitlist-modal")) return;
+          // Skip the mobile sticky CTA (it's an <a> tag, not a button, but be safe)
+          if (btn.closest(".mobile-sticky-cta")) return;
+
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Find the sibling email input
+            var parent = btn.closest(".cta-inline, .final-cta-actions, .nav-links, .section-cta, .pricing-actions");
+            if (!parent) parent = btn.parentElement;
+            var input = parent ? parent.querySelector('input[type="email"]') : null;
+
+            if (!input) return;
+
+            var email = input.value;
+            if (!isValidEmail(email)) {
+              input.style.borderColor = "rgba(239,68,68,.7)";
+              input.style.boxShadow = "0 0 0 3px rgba(239,68,68,.2)";
+              input.setAttribute("placeholder", "Please enter a valid email");
+              input.focus();
+              setTimeout(function () {
+                input.style.borderColor = "";
+                input.style.boxShadow = "";
+                input.setAttribute("placeholder", "you@company.com");
+              }, 2500);
+              return;
+            }
+
+            // Store the parent so we can show inline success later
+            activeCtaInline = parent;
+            openModal(email);
+          });
+        });
+      }
+
+      /* ── Modal close handlers ── */
+      closeBtn.addEventListener("click", function () {
+        // User closed without completing → submit email only
+        if (capturedEmail) {
+          submitEmailOnly(capturedEmail, function () {
+            showInlineSuccess(activeCtaInline);
+          });
+        }
+        closeModal();
+      });
+
+      backdrop.addEventListener("click", function () {
+        if (capturedEmail) {
+          submitEmailOnly(capturedEmail, function () {
+            showInlineSuccess(activeCtaInline);
+          });
+        }
+        closeModal();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.style.display === "flex") {
+          if (capturedEmail) {
+            submitEmailOnly(capturedEmail, function () {
+              showInlineSuccess(activeCtaInline);
+            });
+          }
+          closeModal();
+        }
+      });
+
+      /* ── Modal form submit ── */
+      modalForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(modalForm);
+        var data = {};
+        formData.forEach(function (val, key) { data[key] = val; });
+
+        var submitBtn = modalForm.querySelector(".wl-modal-submit");
+        submitBtn.textContent = "Submitting\u2026";
+        submitBtn.disabled = true;
+
+        submitFullForm(data, function (success) {
+          if (success) {
+            closeModal();
+            window.location.href = "/thank-you";
+          } else {
+            submitBtn.textContent = "Complete Signup";
+            submitBtn.disabled = false;
+            alert("Something went wrong. Please try again.");
+          }
+        });
+      });
+
+      /* ── Init: wait for React to render, then attach ── */
+      function init() {
+        var root = document.getElementById("root");
+        if (root && root.children.length > 0) {
+          attachFormListeners();
+        } else {
+          // React hasn't rendered yet — observe
+          var observer = new MutationObserver(function (mutations, obs) {
+            if (root.children.length > 0) {
+              obs.disconnect();
+              attachFormListeners();
+            }
+          });
+          observer.observe(root, { childList: true });
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
+    </script>
   </body>
 </html>
