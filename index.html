@@ -341,6 +341,11 @@
           display: none;
         }
 
+        /* Smooth fade for sticky CTA hide/show */
+        .mobile-sticky-cta {
+          transition: opacity .3s ease !important;
+        }
+
         /* Final CTA — add bottom padding so sticky CTA doesn't overlap */
         .final-cta {
           padding-bottom: 100px !important;
@@ -557,17 +562,32 @@
         });
       });
 
+      /* ── Hide mobile sticky CTA when final CTA is visible ── */
+      function initStickyCtaHider() {
+        var finalCta = document.querySelector(".final-cta");
+        var stickyCta = document.querySelector(".mobile-sticky-cta");
+        if (!finalCta || !stickyCta) return;
+
+        var io = new IntersectionObserver(function (entries) {
+          stickyCta.style.opacity = entries[0].isIntersecting ? "0" : "1";
+          stickyCta.style.pointerEvents = entries[0].isIntersecting ? "none" : "auto";
+        }, { threshold: 0.1 });
+        io.observe(finalCta);
+      }
+
       /* ── Init: wait for React to render, then attach ── */
       function init() {
         var root = document.getElementById("root");
         if (root && root.children.length > 0) {
           attachFormListeners();
+          initStickyCtaHider();
         } else {
           // React hasn't rendered yet — observe
           var observer = new MutationObserver(function (mutations, obs) {
             if (root.children.length > 0) {
               obs.disconnect();
               attachFormListeners();
+              initStickyCtaHider();
             }
           });
           observer.observe(root, { childList: true });
