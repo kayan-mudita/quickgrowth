@@ -461,6 +461,19 @@
             e.preventDefault();
             e.stopPropagation();
 
+            // Nav button on mobile (email input hidden) → scroll to final CTA
+            var navParent = btn.closest(".nav-links");
+            if (navParent) {
+              var navInput = navParent.querySelector('input[type="email"]');
+              if (!navInput || navInput.offsetParent === null) {
+                var finalCta = document.querySelector(".final-cta");
+                if (finalCta) {
+                  finalCta.scrollIntoView({ behavior: "smooth", block: "center" });
+                  return;
+                }
+              }
+            }
+
             // Find the sibling email input
             var parent = btn.closest(".cta-inline, .final-cta-actions, .nav-links, .section-cta, .pricing-actions");
             if (!parent) parent = btn.parentElement;
