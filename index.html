@@ -300,6 +300,22 @@
       }
       @media (max-width: 768px) {
         .wl-modal-container { padding: 28px 20px 24px; }
+        .wl-field-row { grid-template-columns: 1fr; gap: 0; }
+
+        /* Fix joined border-radii when CTA inputs + buttons stack vertically */
+        .hero-cta .cta-inline .cta-input,
+        .section-cta .cta-inline .cta-input {
+          border-radius: 12px !important;
+        }
+        .hero-cta .cta-inline .cta-button,
+        .section-cta .cta-inline .cta-button {
+          border-radius: 12px !important;
+        }
+
+        /* Nav email input — hide on mobile, keep only button */
+        .nav-links .cta-input {
+          display: none;
+        }
       }
     </style>
 
