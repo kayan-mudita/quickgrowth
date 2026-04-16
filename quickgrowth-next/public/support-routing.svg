@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f101f" />
+      <stop offset="100%" stop-color="#0b0c17" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#22d3ee" stop-opacity="0.5" offset="0%" />
+      <stop stop-color="#6366f1" stop-opacity="0.4" offset="50%" />
+      <stop stop-color="#8b5cf6" stop-opacity="0.5" offset="100%" />
+    </linearGradient>
+  </defs>
+  <style>
+    .panel {
+      fill: url(#bg);
+      stroke: rgba(255, 255, 255, 0.08);
+    }
+    .lane {
+      fill: rgba(255, 255, 255, 0.02);
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-dasharray: 6 6;
+    }
+    .lane-title {
+      fill: rgba(255, 255, 255, 0.75);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+    .router {
+      fill: rgba(99, 102, 241, 0.14);
+      stroke: rgba(99, 102, 241, 0.4);
+    }
+    .router text {
+      fill: rgba(255, 255, 255, 0.85);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+    .path {
+      stroke: url(#glow);
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+    }
+    .card {
+      width: 90px;
+      height: 36px;
+      rx: 8;
+      ry: 8;
+      fill: rgba(255, 255, 255, 0.06);
+      stroke: rgba(255, 255, 255, 0.25);
+    }
+    .card text {
+      fill: white;
+      font-size: 11px;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+    }
+    .pulse {
+      fill: #22d3ee;
+      opacity: 0.6;
+    }
+  </style>
+
+  <rect x="10" y="10" width="460" height="260" rx="18" class="panel" />
+
+  <g>
+    <rect x="30" y="70" width="120" height="160" rx="14" class="lane" />
+    <text x="40" y="90" class="lane-title">Inbox</text>
+
+    <rect x="180" y="50" width="120" height="200" rx="14" class="lane" />
+    <text x="190" y="70" class="lane-title">Router</text>
+
+    <rect x="330" y="30" width="120" height="240" rx="14" class="lane" />
+    <text x="340" y="50" class="lane-title">Destinations</text>
+  </g>
+
+  <rect x="195" y="110" width="90" height="80" rx="12" class="router" />
+  <text x="240" y="140" text-anchor="middle" class="router">Auto</text>
+  <text x="240" y="156" text-anchor="middle" class="router">Router</text>
+
+  <path id="p1" class="path" d="M70 120 C140 120 160 120 195 120 C260 120 300 70 360 70" />
+  <path id="p2" class="path" d="M70 150 C140 150 160 150 195 150 C260 150 300 140 360 130" />
+  <path id="p3" class="path" d="M70 180 C140 180 160 180 195 180 C260 180 300 210 360 220" />
+
+  <g>
+    <circle cx="70" cy="150" r="8" class="pulse">
+      <animate attributeName="r" values="6;10;6" dur="1.6s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.6s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <g>
+    <rect class="card">
+      <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#p1" />
+      </animateMotion>
+    </rect>
+    <text x="14" y="22">
+      <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#p1" />
+      </animateMotion>
+      VIP / Billing
+    </text>
+  </g>
+
+  <g>
+    <rect class="card">
+      <animateMotion dur="6.4s" repeatCount="indefinite" rotate="auto" begin="0.6s">
+        <mpath href="#p2" />
+      </animateMotion>
+    </rect>
+    <text x="14" y="22">
+      <animateMotion dur="6.4s" repeatCount="indefinite" rotate="auto" begin="0.6s">
+        <mpath href="#p2" />
+      </animateMotion>
+      Product Bug
+    </text>
+  </g>
+
+  <g>
+    <rect class="card">
+      <animateMotion dur="6.8s" repeatCount="indefinite" rotate="auto" begin="1.2s">
+        <mpath href="#p3" />
+      </animateMotion>
+    </rect>
+    <text x="14" y="22">
+      <animateMotion dur="6.8s" repeatCount="indefinite" rotate="auto" begin="1.2s">
+        <mpath href="#p3" />
+      </animateMotion>
+      FAQ / Macro
+    </text>
+  </g>
+
+  <g>
+    <rect x="360" y="50" width="70" height="36" rx="10" fill="rgba(99, 102, 241, 0.15)" stroke="rgba(99, 102, 241, 0.5)" />
+    <text x="395" y="72" text-anchor="middle" class="lane-title">VIP</text>
+    <rect x="360" y="120" width="70" height="36" rx="10" fill="rgba(34, 211, 238, 0.12)" stroke="rgba(34, 211, 238, 0.4)" />
+    <text x="395" y="142" text-anchor="middle" class="lane-title">Support L2</text>
+    <rect x="360" y="200" width="70" height="36" rx="10" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.4)" />
+    <text x="395" y="222" text-anchor="middle" class="lane-title">Self-serve</text>
+  </g>
+</svg>
