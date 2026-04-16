@@ -8,7 +8,7 @@ export async function submitWaitlist(
   for (const [k, v] of Object.entries(data)) body.append(k, v);
 
   try {
-    const res = await fetch("/", {
+    const res = await fetch("/__forms.html", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: body.toString(),

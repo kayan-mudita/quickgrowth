@@ -1,10 +1,8 @@
 import { CtaInline } from "@/components/cta-inline";
-import { NetlifyFormDetect } from "@/components/netlify-form-detect";
 
 export default function Home() {
   return (
     <>
-      <NetlifyFormDetect />
       <main className="flex min-h-screen flex-col items-center justify-center px-6 py-24">
         <div className="w-full max-w-2xl space-y-8 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-[#6366f1]/30 bg-[#6366f1]/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.05em] text-[#a5b4fc]">
