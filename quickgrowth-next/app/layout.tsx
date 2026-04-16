@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Manrope, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
+import { Footer } from "@/components/sections/footer";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -86,6 +87,7 @@ export default function RootLayout({
         </noscript>
 
         {children}
+        <Footer />
         <Toaster />
       </body>
     </html>
