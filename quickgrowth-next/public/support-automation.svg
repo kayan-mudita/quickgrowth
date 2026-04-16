@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="260" viewBox="0 0 480 260" fill="none">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#0f1020" offset="0%" />
+      <stop stop-color="#0c0d18" offset="100%" />
+    </linearGradient>
+    <linearGradient id="ticketGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8b5cf6" offset="0%" />
+      <stop stop-color="#6366f1" offset="100%" />
+    </linearGradient>
+  </defs>
+  <style>
+    .panel {
+      stroke: rgba(255, 255, 255, 0.08);
+      fill: url(#panel);
+    }
+    .grid line {
+      stroke: rgba(255, 255, 255, 0.05);
+      stroke-dasharray: 4 6;
+    }
+    .router {
+      fill: rgba(255, 255, 255, 0.04);
+      stroke: rgba(255, 255, 255, 0.12);
+    }
+    .router text {
+      fill: rgba(255, 255, 255, 0.8);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+    .path {
+      stroke: rgba(99, 102, 241, 0.5);
+      stroke-width: 3;
+      fill: none;
+    }
+    .node {
+      fill: rgba(255, 255, 255, 0.1);
+      stroke: rgba(255, 255, 255, 0.2);
+    }
+    .node text {
+      fill: rgba(255, 255, 255, 0.7);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 11px;
+    }
+    .ticket {
+      width: 70px;
+      height: 30px;
+      rx: 6;
+      ry: 6;
+      fill: url(#ticketGrad);
+      stroke: rgba(255, 255, 255, 0.3);
+    }
+    .ticket text {
+      fill: white;
+      font-size: 11px;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+    }
+    .pulse {
+      fill: #22d3ee;
+      opacity: 0.6;
+    }
+  </style>
+
+  <rect x="8" y="8" width="464" height="244" rx="16" class="panel" />
+
+  <g class="grid">
+    <line x1="40" y1="70" x2="440" y2="70" />
+    <line x1="40" y1="130" x2="440" y2="130" />
+    <line x1="40" y1="190" x2="440" y2="190" />
+  </g>
+
+  <rect x="210" y="95" width="70" height="70" rx="12" class="router" />
+  <text x="245" y="135" text-anchor="middle" class="router">Router</text>
+
+  <path id="route1" class="path" d="M60 130 H220 C250 130 250 90 275 90 H420" />
+  <path id="route2" class="path" d="M60 130 H220 C250 130 250 130 275 130 H420" />
+  <path id="route3" class="path" d="M60 130 H220 C250 130 250 170 275 170 H420" />
+
+  <g class="node">
+    <circle cx="420" cy="90" r="16" />
+    <text x="420" y="94" text-anchor="middle">VIP</text>
+  </g>
+  <g class="node">
+    <circle cx="420" cy="130" r="16" />
+    <text x="420" y="134" text-anchor="middle">L2</text>
+  </g>
+  <g class="node">
+    <circle cx="420" cy="170" r="16" />
+    <text x="420" y="174" text-anchor="middle">L1</text>
+  </g>
+
+  <circle cx="60" cy="130" r="8" class="pulse">
+    <animate attributeName="r" values="6;10;6" dur="1.6s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.6s" repeatCount="indefinite" />
+  </circle>
+
+  <g>
+    <rect class="ticket">
+      <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#route1" />
+      </animateMotion>
+    </rect>
+    <text x="12" y="20">
+      <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#route1" />
+      </animateMotion>
+      Urgent
+    </text>
+  </g>
+
+  <g>
+    <rect class="ticket">
+      <animateMotion dur="5.6s" repeatCount="indefinite" rotate="auto" begin="0.6s">
+        <mpath href="#route2" />
+      </animateMotion>
+    </rect>
+    <text x="12" y="20">
+      <animateMotion dur="5.6s" repeatCount="indefinite" rotate="auto" begin="0.6s">
+        <mpath href="#route2" />
+      </animateMotion>
+      Billing
+    </text>
+  </g>
+
+  <g>
+    <rect class="ticket">
+      <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" begin="1.2s">
+        <mpath href="#route3" />
+      </animateMotion>
+    </rect>
+    <text x="12" y="20">
+      <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" begin="1.2s">
+        <mpath href="#route3" />
+      </animateMotion>
+      FAQ
+    </text>
+  </g>
+</svg>

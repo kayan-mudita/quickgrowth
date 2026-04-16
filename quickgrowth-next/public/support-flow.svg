@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f101f" />
+      <stop offset="100%" stop-color="#0b0c17" />
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#6366f1" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.7" />
+    </linearGradient>
+  </defs>
+  <style>
+    .panel { fill: url(#bg); stroke: rgba(255, 255, 255, 0.1); }
+    .lane { fill: rgba(255, 255, 255, 0.02); stroke: rgba(255, 255, 255, 0.06); }
+    .label { fill: rgba(255, 255, 255, 0.75); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 12px; letter-spacing: 0.04em; }
+    .router { fill: rgba(99, 102, 241, 0.16); stroke: rgba(99, 102, 241, 0.45); }
+    .router text { fill: rgba(255, 255, 255, 0.9); font-family: "Inter", system-ui, -apple-system, sans-serif; font-size: 11px; letter-spacing: 0.06em; }
+    .path { stroke: url(#path); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .card { width: 90px; height: 34px; rx: 8; ry: 8; fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.25); }
+    .card text { fill: white; font-size: 11px; font-family: "Inter", system-ui, -apple-system, sans-serif; font-weight: 600; }
+    .dest rect { rx: 10; ry: 10; }
+  </style>
+
+  <rect x="10" y="10" width="460" height="260" rx="18" class="panel" />
+
+  <rect x="30" y="70" width="110" height="150" rx="14" class="lane" />
+  <text x="40" y="90" class="label">Inbox</text>
+
+  <rect x="180" y="60" width="120" height="170" rx="14" class="lane" />
+  <text x="190" y="80" class="label">Auto Router</text>
+
+  <rect x="330" y="40" width="120" height="210" rx="14" class="lane" />
+  <text x="340" y="60" class="label">Destinations</text>
+
+  <rect x="200" y="120" width="80" height="80" rx="12" class="router" />
+  <text x="240" y="150" text-anchor="middle" class="router">AI</text>
+  <text x="240" y="168" text-anchor="middle" class="router">Router</text>
+
+  <path id="path1" class="path" d="M70 120 C140 120 160 120 200 120 C270 120 310 80 360 80" />
+  <path id="path2" class="path" d="M70 150 C140 150 160 150 200 150 C270 150 310 140 360 140" />
+  <path id="path3" class="path" d="M70 180 C140 180 160 180 200 180 C270 180 310 210 360 220" />
+
+  <g>
+    <rect class="card">
+      <animateMotion dur="6s" repeatCount="indefinite">
+        <mpath href="#path1" />
+      </animateMotion>
+    </rect>
+    <text x="12" y="22">
+      <animateMotion dur="6s" repeatCount="indefinite">
+        <mpath href="#path1" />
+      </animateMotion>
+      VIP / Billing
+    </text>
+  </g>
+
+  <g>
+    <rect class="card">
+      <animateMotion dur="6.4s" repeatCount="indefinite" begin="0.6s">
+        <mpath href="#path2" />
+      </animateMotion>
+    </rect>
+    <text x="12" y="22">
+      <animateMotion dur="6.4s" repeatCount="indefinite" begin="0.6s">
+        <mpath href="#path2" />
+      </animateMotion>
+      Product Bug
+    </text>
+  </g>
+
+  <g>
+    <rect class="card">
+      <animateMotion dur="6.8s" repeatCount="indefinite" begin="1.2s">
+        <mpath href="#path3" />
+      </animateMotion>
+    </rect>
+    <text x="12" y="22">
+      <animateMotion dur="6.8s" repeatCount="indefinite" begin="1.2s">
+        <mpath href="#path3" />
+      </animateMotion>
+      FAQ / Macro
+    </text>
+  </g>
+
+  <g class="dest">
+    <rect x="360" y="60" width="78" height="34" fill="rgba(99, 102, 241, 0.16)" stroke="rgba(99, 102, 241, 0.5)" />
+    <text x="399" y="82" text-anchor="middle" class="label">VIP</text>
+    <rect x="360" y="130" width="78" height="34" fill="rgba(34, 211, 238, 0.16)" stroke="rgba(34, 211, 238, 0.45)" />
+    <text x="399" y="152" text-anchor="middle" class="label">L2</text>
+    <rect x="360" y="210" width="78" height="34" fill="rgba(16, 185, 129, 0.16)" stroke="rgba(16, 185, 129, 0.45)" />
+    <text x="399" y="232" text-anchor="middle" class="label">Self-serve</text>
+  </g>
+</svg>

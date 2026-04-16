@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* QuickGrowth design tokens — see design-system/quickgrowth/MASTER.md */
+@theme inline {
+  /* Fonts */
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-space-grotesk);
+
+  /* Brand + surface colors mapped to shadcn tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* QuickGrowth brand palette (additive to shadcn tokens) */
+  --color-bg-base: #0a0a0a;
+  --color-bg-raised: #111118;
+  --color-bg-card: #161622;
+  --color-brand-indigo: #6366f1;
+  --color-brand-violet: #8b5cf6;
+  --color-brand-teal: #10b981;
+  --color-brand-blue: #3b82f6;
+  --color-brand-amber: #f59e0b;
+  --color-brand-red: #ef4444;
+  --color-accent-indigo: #a5b4fc;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+
+  /* Keyframes wired for Tailwind animation utilities */
+  --animate-mesh-move: meshMove 20s ease infinite;
+  --animate-float: float 25s ease-in-out infinite;
+  --animate-grid-scroll: gridScroll 20s linear infinite;
+}
+
+/* Dark-only site — root vars ARE the dark theme. No light mode shipped. */
+:root {
+  --background: #0a0a0a;
+  --foreground: #f8fafc;
+  --card: #161622;
+  --card-foreground: #f8fafc;
+  --popover: #161622;
+  --popover-foreground: #f8fafc;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: #1e1e2a;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e1e2a;
+  --muted-foreground: rgba(255, 255, 255, 0.7);
+  --accent: #8b5cf6;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.06);
+  --ring: rgba(154, 107, 255, 0.8);
+  --radius: 0.75rem;
+}
+
+/* Keyframes — ambient hero background, preserved from production */
+@keyframes meshMove {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+@keyframes float {
+  0%, 100% { transform: translate(0) scale(1) rotate(0); }
+  33% { transform: translate(50px, -80px) scale(1.1) rotate(120deg); }
+  66% { transform: translate(-30px, 40px) scale(0.9) rotate(240deg); }
+}
+@keyframes gridScroll {
+  0% { transform: translate(0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { @apply font-sans antialiased; overflow-x: hidden; }
+  body { @apply bg-background text-foreground; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+}
+
+/* Respect user motion preference — covers our ambient animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
